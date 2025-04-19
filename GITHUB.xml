@@ -17,8 +17,8 @@
   </Triggers>
   <Principals>
     <Principal id="Author">
-      <UserId>YOUR_USER_SID</UserId>
-      <LogonType>Password</LogonType>
+      <UserId>S-1-5-21-492584251-877348540-2625436263-1001</UserId>
+      <LogonType>code</LogonType>
       <RunLevel>HighestAvailable</RunLevel>
     </Principal>
   </Principals>
