@@ -33,4 +33,4 @@ if __name__ == "__main__":
     print(f"🚀 Starting DSA auto-pusher for {REPO_PATH}")
     while True:
         git_push()
-        time.sleep(300)  # 5 minutes = 300 seconds
+        time.sleep(150)  # 5 minutes = 300 seconds
