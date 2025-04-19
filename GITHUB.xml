@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-16"?>
 <Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
   <RegistrationInfo>
-    <Description>Automatically push DSA repository changes every 5 minutes</Description>
-    <URI>\GitHub Auto-Push (DSA)</URI>
+    <Description>Auto-push DSA repository every 5 minutes</Description>
+    <URI>\DSA Auto-Push</URI>
   </RegistrationInfo>
   <Triggers>
     <CalendarTrigger>
@@ -10,7 +10,7 @@
         <Interval>PT5M</Interval>
         <StopAtDurationEnd>false</StopAtDurationEnd>
       </Repetition>
-      <StartBoundary>2023-01-01T00:00:00</StartBoundary>
+      <StartBoundary>2024-01-01T00:00:00</StartBoundary>
       <ExecutionTimeLimit>PT0S</ExecutionTimeLimit>
       <Enabled>true</Enabled>
     </CalendarTrigger>
@@ -18,7 +18,7 @@
   <Principals>
     <Principal id="Author">
       <UserId>S-1-5-21-492584251-877348540-2625436263-1001</UserId>
-      <LogonType>code</LogonType>
+      <LogonType>Password</LogonType>
       <RunLevel>HighestAvailable</RunLevel>
     </Principal>
   </Principals>
@@ -45,8 +45,8 @@
   </Settings>
   <Actions Context="Author">
     <Exec>
-      <Command>C:\Python310\pythonw.exe</Command>
-      <Arguments>"C:\D Drive\DailyContributions\DSA-GITHUB\DSA\dsa_autopush.py"</Arguments>
+      <Command>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Command>
+      <Arguments>-ExecutionPolicy Bypass -Command "&amp; 'C:\D Drive\DailyContributions\DSA-GITHUB\DSA\dsa_autopush.py'"</Arguments>
     </Exec>
   </Actions>
 </Task>
