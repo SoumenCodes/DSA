@@ -10,7 +10,8 @@
         <Interval>PT5M</Interval>
         <StopAtDurationEnd>false</StopAtDurationEnd>
       </Repetition>
-      <StartBoundary>2024-01-01T00:00:00</StartBoundary>
+      <!-- Fixed StartBoundary (use past date) -->
+      <StartBoundary>2023-08-01T09:00:00</StartBoundary>
       <ExecutionTimeLimit>PT0S</ExecutionTimeLimit>
       <Enabled>true</Enabled>
     </CalendarTrigger>
@@ -45,8 +46,9 @@
   </Settings>
   <Actions Context="Author">
     <Exec>
-      <Command>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Command>
-      <Arguments>-ExecutionPolicy Bypass -Command "&amp; 'C:\D Drive\DailyContributions\DSA-GITHUB\DSA\dsa_autopush.py'"</Arguments>
+      <!-- Simplified direct Python execution -->
+      <Command>C:\Python310\pythonw.exe</Command>
+      <Arguments>"C:\D Drive\DailyContributions\DSA-GITHUB\DSA\dsa_autopush.py"</Arguments>
     </Exec>
   </Actions>
 </Task>
