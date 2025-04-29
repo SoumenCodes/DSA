@@ -1,21 +1,24 @@
 import subprocess
 from datetime import datetime
 
-timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+# FIX: Replace colons with hyphens in filename
+timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")  # Now: "2025-04-19_18-32-00"
 filename = f"update_{timestamp}.txt"
 
-# Log the working directory
-subprocess.run(['git', 'status'], shell=True)  # Debug: Ensure you're in the repo
-
-with open(filename, 'w') as f:
-    f.write(f"Auto-commit at {timestamp}")
-
 try:
+    # Debug: Print the working directory and Git status
+    subprocess.run(['git', 'status'], shell=True)
+    
+    # Create a new file
+    with open(filename, 'w') as f:
+        f.write(f"Auto-commit at {timestamp}\n")
+    
+    # Git commands
     subprocess.run(['git', 'add', filename], check=True, shell=True)
     subprocess.run(['git', 'commit', '-m', f'Add {filename}'], check=True, shell=True)
-    subprocess.run(['git', 'push', 'origin', 'main'], check=True, shell=True)  # Change 'main' if needed
-    print(f"Pushed {filename} to GitHub!")
+    subprocess.run(['git', 'push', 'origin', 'main'], check=True, shell=True)
+    print(f"Successfully pushed {filename} to GitHub!")
 except Exception as e:
     print(f"Error: {e}")
     with open("error_log.txt", 'a') as log:
-        log.write(f"{timestamp} - {e}\n")
+        log.write(f"{datetime.now()} - {e}\n")
